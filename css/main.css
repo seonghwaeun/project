@@ -423,10 +423,10 @@ body.fixed {
 	text-indent: -9999px;
 }
 #pause_play.pause {
-	background: url(images/btn_pause.png) no-repeat 0 0;
+	background: url(../images/btn_pause.png) no-repeat 0 0;
 }
 #pause_play.play {
-	background: url(images/btn_play.png) no-repeat 0 0;
+	background: url(../images/btn_play.png) no-repeat 0 0;
 }
 .main_slider .profile_list {
 	display: flex;
@@ -555,6 +555,10 @@ body.fixed {
 #page1 .page_inner {
   max-width: 1280px;
   margin: 0 auto;
+}
+#page1.visible .page_inner{
+	opacity: 1;
+	transform: translateY(0px);
 }
 #page1 .page_inner .profile_top {
   display: flex;
@@ -945,9 +949,6 @@ body.fixed {
   margin-right: 10px;
   border-bottom: 2px solid #000;
   /* padding-top: 50px; */
-}
-#footer .footer_inner .btn_top.active {
-  right: 20px;
 }
 .btn_top {
   position: fixed;
