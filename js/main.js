@@ -230,4 +230,25 @@ $(function(){
 	});
 });
 
-/* btn_top*/
+$("#pause_play").click(function(e){
+	e.preventDefault();
+
+	if($(this).hasClass("play")){
+		$(this).removeAttr("class");
+		$(this).addClass("pause");
+		$(this).text("pause");
+		mainSwiper.autoplay.start();
+		$(".main_slider .progressbar span").stop().removeAttr("style");
+
+		setTimeout(function(){
+			$(".main_slider .progressbar span").animate({width: "100%"}, 6000);
+		}, 50);
+	}
+	else{
+		$(this).removeAttr("class");
+		$(this).addClass("play");
+		$(this).text("play");
+		mainSwiper.autoplay.stop();
+		$(".main_slider .progressbar span").stop();
+	}
+});
