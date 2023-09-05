@@ -228,27 +228,69 @@ $(function(){
 		e.preventDefault();
 		$("html").animate({scrollTop:0}, 400);
 	});
-});
 
-$("#pause_play").click(function(e){
-	e.preventDefault();
+	let tabArray=[];
+	let tab1=0;
+	let tab2=0;
+	let tabLeft=30;
+	let tabTop=260;
+	let wint, winw, targety;
 
-	if($(this).hasClass("play")){
-		$(this).removeAttr("class");
-		$(this).addClass("pause");
-		$(this).text("pause");
-		mainSwiper.autoplay.start();
-		$(".main_slider .progressbar span").stop().removeAttr("style");
+	$(window).resize(function(){
+		tabLeft=$("#page2 .category .tab_lst").offset().left;
+		winw=$(window).width();
+	});
 
-		setTimeout(function(){
-			$(".main_slider .progressbar span").animate({width: "100%"}, 6000);
-		}, 50);
-	}
-	else{
-		$(this).removeAttr("class");
-		$(this).addClass("play");
-		$(this).text("play");
-		mainSwiper.autoplay.stop();
-		$(".main_slider .progressbar span").stop();
-	}
+	// category_tap
+	$(window).trigger("resize");
+
+	$(window).scroll(function(){
+		wint=$(window).scrollTop();
+
+		if(wint > $(".work_list").offset().top){
+			if($("#page2 .category").hasClass("fixed") == false){
+				$("#page2 .category").addClass("fixed");
+			}
+		}else{
+			if($("#page2 .category").hasClass("fixed") == true){
+				$("#page2 .category").removeClass("fixed");
+			}
+		}
+	});
+
+	$("#page2 .category .tab_lst li").eq(tab2).addClass("active");
+
+	$("#page2 .category .tab_lst li").each(function(i){
+		tabArray.push($(this).find("a span.pc").width());
+	});
+
+	function tabInteraction(){
+		$("#page2 .category .line").css({
+			left: $("#page2 .category .tab_lst li").eq(tab1).offset().left-tabLeft,
+			width: tabArray[tab1]
+		});
+	};
+
+	tabInteraction();
+
+	$("#page2 .category .tab_lst li").hover(
+		function(){
+			tab1=$(this).index();
+			tabInteraction();
+		},
+		function(){
+			tab1=tab2;
+			tabInteraction();
+		}
+	);
+	$("#page2 .category .tab_lst li").click(function(e){
+		e.preventDefault();
+		tab2=$(this).index();
+
+		$("#page2 .category .tab_lst li").removeClass("active");
+		$("#page2 .category .tab_lst li").eq(tab2).addClass("active");
+
+		targety=$(".work_list li").eq(tab2).offset().top-tabTop;
+		$("html").animate({scrollTop: targety}, 600);
+	});
 });
