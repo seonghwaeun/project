@@ -556,9 +556,12 @@ body.fixed {
   max-width: 1280px;
   margin: 0 auto;
 }
-#page1.visible .page_inner{
-	opacity: 1;
-	transform: translateY(0px);
+#page1.active .page_inner .profile_top .title h2,
+#page1.active .page_inner .profile_top .title_txt h4,
+#page1.active .page_inner .profile_top .title_txt span,
+#page1.active .page_inner .profile_top .title_txt p {
+  opacity: 1;
+	transform: translateY(0);
 }
 #page1 .page_inner .profile_top {
   display: flex;
@@ -570,6 +573,10 @@ body.fixed {
 }
 #page1 .page_inner .profile_top .title h2 {
   font-size: 2em;
+  opacity: 0;
+	transform: translateX(-100px);
+	transition: opacity 0.4s, transform 0.6s;
+	transition-delay: 0s;
 }
 #page1 .page_inner .profile_top .title_txt {
   width: 80%;
@@ -577,16 +584,28 @@ body.fixed {
 #page1 .page_inner .profile_top .title_txt p {
   display: block;
   line-height: 24px;
+  opacity: 0;
+	transform: translateX(-100px);
+	transition: opacity 0.4s, transform 0.6s;
+	transition-delay: 0.2s;
 }
 #page1 .page_inner .profile_top .title_txt h4 {
   font-size: 3.667em;
   display: block;
   line-height: 3;
+  opacity: 0;
+	transform: translateX(-100px);
+	transition: opacity 0.4s, transform 0.6s;
+	transition-delay: 0.2s;
 }
 #page1 .page_inner .profile_top .title_txt span {
   font-size: 2em;
   display: block;
   line-height: 100px;
+  opacity: 0;
+	transform: translateX(-100px);
+	transition: opacity 0.4s, transform 0.6s;
+	transition-delay: 0.2s;
 }
 #page1 .page_inner .profile_top .resume{
   padding-top: 170px;
